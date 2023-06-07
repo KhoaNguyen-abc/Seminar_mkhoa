@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <isExposed>True</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage, lightning__RecordPage">
+            <property name="fullText" type="String" default="Seminar" label="Search..."/>
+            <property name="isPublic" type="String" default="True" label="Public"/>
+            <property name="fields" type="String" default="Name" label="Name"/>
+            <property name="sort_t" type="String" default="ASC" label="Sort"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

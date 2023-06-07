@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="fullText" type="String" default="Seminar"/>
+            <property name="Sort_t" type="String" default="ASC" />
+            <property name="Select_t" type="String" default="Name" />
+            <property name="FromDate" type="String" default="2023-06-01" />
+            <property name="FromPrice" type="String" default="1000" />
+            <property name="currentPage" type="String" default="0" />
+            <property name="show" type="String" default="shown" />
+            <property name="isPublic" type="String" default="True" />
+            <property name="pageSize" type="String" default="10" datasource="10, 50, 100" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

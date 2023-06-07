@@ -1,0 +1,53 @@
+<template>
+    <div class="c-container">
+        <p class="slds-align_absolute-center"><b>Booking form</b></p>
+        <lightning-layout multiple-rows="false">
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="8">
+                        <div class="page-section page-right">
+                            <div style="display: block;">
+                                <lightning-input type="text" label="Name*:" placeholder={NameBooking}></lightning-input>
+                                <lightning-input type="text" label="Email*:" placeholder={EmailBooking}></lightning-input>
+                                <lightning-input type="text" label="Phone:" placeholder={PhoneBooking}></lightning-input>
+                                <lightning-input type="Date" label="BirthDate:" placeholder={BirthDateBooking}></lightning-input>
+                                <lightning-input type="text" label="Voucher:" placeholder={VoucherBooking}></lightning-input>
+                                <span>
+                                    <input type="checkbox" name="checkbooking" id="checkbooking">
+                                    <label for="checkbooking">* I agree with the terms and policy to register this seminar</label>
+                                </span>
+                                <span class="slds-align_absolute-center" style="margin-top: 3%">
+                                    <button>Cancel</button>
+                                    <span style="margin-right: 3%; margin-left: 3%"></span>
+                                    <button>Regiter</button>
+                                </span>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="7">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item padding="" size="7">
+                                <div class="page-section">
+                                    <h2><b>Image:</b></h2>
+                                    <img src="" alt="">
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="" size="7">
+                                <div class="page-section">
+                                    <h2><b>Name: Seminar name</b>></h2>
+                                    <p>
+                                        Lorem suit..
+                                    </p>
+                                    <hr>
+                                    <div class="slds-align_absolute-center" style="margin-top: 9%">
+                                        <lightning-formatted-number value="12.32" format-style="currency" currency-code="USD" currency-display-as="code"></lightning-formatted-number>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

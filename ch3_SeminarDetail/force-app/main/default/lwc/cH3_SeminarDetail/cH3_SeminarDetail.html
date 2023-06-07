@@ -1,0 +1,57 @@
+<template>
+    <div class="c-container">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section" style="border: 0">
+                    <lightning-input data-id="inputSearch" type="text" label="Seminar name" value="" placeholder="Search..."></lightning-input>
+                    <div style="display: flex; margin-top: 1%">
+                        <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} style="margin-left: 46%"></lightning-button>
+                        <span style="margin-left: 10%;margin-right: 1%">Sort: </span>
+                        <template for:each={checkboxs} for:item="checkboxitem">
+                            <div key={checkboxitem.label} style="margin-right: 2%">
+                                <input type="checkbox" data-id={checkboxitem.label} name={checkboxitem.label} value={checkboxitem.value} onchange={handleChangeCheckBox}/>
+                                <label for={checkboxitem.label}>{checkboxitem.label}</label>
+                            </div>
+                        </template>
+                        <span style="margin-right: 3%">Name: </span>
+                        <select data-id="selectOptions" name="selectOptions" onchange={handleChangeSelect}>
+                            <option value="Price__c" selected>Price</option>
+                            <option value="Start_Date__c">Start Date</option>
+                        </select>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <template lwc:if={serminars}>
+                    <template for:each={serminars} for:item="serminar">
+                        <div key={serminar.Id}>
+                            <lightning-layout multiple-rows="false" class="slds-align_absolute-center">
+                                <lightning-layout-item padding="" size="2">
+                                    <div class="page-section page-right">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/1088/1088537.png" alt={serminar.Id} style="width: 140px; height: 110px;">
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="" size="5">
+                                    <div class="page-section">
+                                        <h2>Name: {serminar.Name}</h2>
+                                        <p>
+                                            <lightning-formatted-rich-text value={serminar.Description__c}></lightning-formatted-rich-text>
+                                        </p>
+                                    <hr>
+                                        <div class="slds-text-align_right">
+                                            <a href="#" style="margin-right: 20%">Details</a>   
+                                            <lightning-formatted-number value={serminar.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>            
+                    </template>
+                </template>
+                <template lwc:else>
+                    <div style="background-color: whitesmoke">Loading data serminars List...</div>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

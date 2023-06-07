@@ -1,0 +1,69 @@
+<template>
+    <div class="c-container">
+        <p class="slds-align_absolute-center"><b>Seminar Detail</b></p>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section" style="border:0">
+                    <lightning-layout multiple-rows="false">
+                        <lightning-layout-item padding="" size="1">
+                            <div class="page-section page-right">
+                                <img src="" alt="" style="width:140px; height:110px;" >
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="" size="11">
+                            <div class="page-section page-main">
+                                <h2>Name: <b>Seminar name</b></h2>
+                                <p>
+                                    <lightning-formatted-rich-text value="Description"></lightning-formatted-rich-text>
+                                </p>
+                                <hr>
+                                <p  class="slds-text-align_right">
+                                    <a href="#" style="margin-right: 46%;">Details</a>
+                                    <lightning-formatted-number value="12.34" format-style="currency" currency-code="USD" currency-display-as="code"></lightning-formatted-number>
+                                </p>
+                                <div style="clear:both"></div>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section page-right">
+                    <h2>
+                        <lightning-icon icon-name="utility:chevrondown" alternative-text="chevrondown" title="chevrondown"></lightning-icon> 
+                        <b>Section Name</b>
+                    </h2>
+                    <p>
+                        Description.
+                    </p>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section page-main">
+                    <h2>
+                        <lightning-icon icon-name="utility:chevrondown" alternative-text="chevrondown" title="chevrondown"></lightning-icon> 
+                        <b>Section Name</b>
+                    </h2>
+                    <p>
+                        Description.
+                    </p>
+                    <hr>
+                    <div class="slds-align_absolute-center" style="margin-top: 3%">
+                        <button>Show all/ Show less</button>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                <div class="page-footer page-section" style="border:0">
+                    <div style="float:left">
+                        <button>Back to Seminars</button>
+                    </div>
+                    <div style="float:right">
+                        <button>Register</button>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

@@ -1,0 +1,59 @@
+<template>
+    <lightning-card title="Seminar name" icon-name="action:new_note"></lightning-card>
+    <div class="c-container">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section" style="border:0">
+                    <lightning-input type="text" name="inputSearch" label="Seminar name" value="" placeholder="Search..."></lightning-input>
+                    <div style="display: flex; margin-left: 46%; margin-top: 3%">
+                        <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick}></lightning-button>
+                        <span style="margin-left: 10%">Sort: </span>
+                        <template for:each={options} for:item="option">
+                            <div key={option.label} style="margin-left: 2%">
+                                <input type="checkbox" id={option.label} value={option.value} name={option.label} onchange={changeCheckBox}/>
+                                <label for={option.label}>{option.value}</label>&nbsp;
+                            </div>
+                        </template>
+                        <span style="margin-left: 3%">Name: </span>
+                        <select id="selectfields" style="width: 20%; margin-left:4%" name="selectFields" onchange={handleChangeSelect} label="Name" class="slds-select">
+                            <option value="Price__c" selected>Price</option>
+                            <option value="Start_Date__c">Start_Date</option>
+                        </select>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                    <template lwc:if={serminars}>
+                        <template for:each={serminars} for:item="serminar">
+                            <div key={serminar.Id}>
+                                <lightning-layout multiple-rows="false" class="slds-align_absolute-center">
+                                        <div>Seminars List ready...</div>
+                                                <lightning-layout-item padding="" size="2">
+                                                    <div class="page-section page-right">
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/1088/1088537.png" alt={serminar.Id} title="Image" style="height: 124px;"/>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6">
+                                                    <div class="page-section page-main">
+                                                        <h2>Name: {serminars.Name}</h2>
+                                                        <p>
+                                                            <lightning-formatted-rich-text value={serminar.Description__c}></lightning-formatted-rich-text>
+                                                        </p>
+                                                        <hr>
+                                                        <p class="slds-text-align_right">
+                                                            <a href="#" style="margin-right: 41%">Details</a>
+                                                            <lightning-formatted-number value={serminar.Price__c} maximum-fraction-digits="2">$</lightning-formatted-number>
+                                                        </p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div>Loading seminars List...</div>
+                    </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

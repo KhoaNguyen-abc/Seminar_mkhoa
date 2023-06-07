@@ -1,0 +1,95 @@
+<template>
+    <div class="c-container">
+        <p class="slds-align_absolute-center"><b>ALL SEMINARS</b></p>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section page-header" style="border:0">
+                    <lightning-input data-id="inputSearch" type="text" label="All Seminars" placeholder="Search..." value=""></lightning-input>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section">
+                    <p><b>Start Code</b></p>
+                    <div style="display: flex; flex-direction:row; flex-wrap:wrap;">
+                        <lightning-input style="width:45%; margin-right: 8%" data-id="inputFromDate" type="Date" label="From date" placeholder="input date..." value=""></lightning-input>
+                        <lightning-input style="width:45%;" data-id="inputToDate" type="Date" label="To date" placeholder="input date..." value=""></lightning-input>
+                    </div>
+                    <p><b>Price</b></p>
+                    <div style="display: flex; flex-direction:row; flex-wrap:wrap; width:100%">
+                        <lightning-input style="width:45%; margin-right: 8%" data-id="inputFromPrice" type="Number" label="From price" placeholder="input date..." value=""></lightning-input>
+                        <lightning-input style="width:45%;" data-id="inputToPrice" type="Number" label="To price" placeholder="input date..." value=""></lightning-input>
+                    </div>
+                    <div class="slds-align_absolute-center" style="margin-top: 3%">
+                        <button type="button" onclick={handleClearSearch}>Clear search</button>
+                        <span style="margin-left: 3%; margin-right:3%"></span>
+                        <button type="button" onclick={handleSearch}>Search</button>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section">
+                    <div style="float:left; width: 110px">
+                        <select data-id="SelectPageSize" name="pageSize" onchange={handleChangePageSize}>
+                            <template for:each={pageSize} for:item="ps">
+                                <option key={ps.value} value={ps.value}>{ps.value}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <div style="float:right; display:flex; flex-direction:row; flex-wrap:wrap; width:20%">
+                        <span style="margin-right: 3%">Sort</span>
+                        <template for:each={options} for:item="option">
+                            <span key={option.label} style="margin-right: 3%">
+                                <input type="checkbox" value={option.value} name={option.label} id={option.label}/>
+                                <label for={option.label}>{option.value}</label>
+                            </span>
+                        </template>
+                        <span>
+                            <b style="margin-right: 3%">Name</b>
+                            <select data-id="SelectFieldSort" name="FieldSort" onchange={handelChangeSelectFieldSorts}>
+                                <option value="Name" selected>Name</option>
+                                <option value="Price__c">Price__c</option>
+                                <option value="Start_Date__c">Start_Date__c</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <template for:each={AllSeminars} for:item="Seminar">
+                    <c-ch4_-serminar-detail key={Seminar.Id}></c-ch4_-serminar-detail>
+                </template>
+                <!-- <lightning-layout multiple-rows="false" key={Seminar.Id} class="slds-align_absolute-center">
+                    <lightning-layout-item padding="" size="3">
+                        <div class="page-section page-right">
+                            <img src="" alt={Seminar.Id} style="width:140px; height:110px;" >
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="" size="6">
+                        <div class="page-section page-main">
+                            <h2>Name: <b>{Seminar.Name}</b></h2>
+                            <p>
+                                <lightning-formatted-rich-text value={Seminar.Description__c}></lightning-formatted-rich-text>
+                            </p>
+                            <hr>
+                            <div class="slds-text-align_right">
+                                <a href="#" style="margin-right: 37%;">Details</a>
+                                <lightning-formatted-number value={Seminar.Price__c} format-style="currency" currency-code="USD" currency-display-as="code"></lightning-formatted-number>
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout> -->
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section slds-align_absolute-center" style="display:flex; flex-direction:row; flex-wrap:wrap" onmousedown={handleButtonPaging}>
+                    <button type="button" value={First} class="btnPaging">First</button>
+                    <button type="button" value={Previous} class="btnPaging">Previous</button>
+                    <input type="text" class="slds-text-align_center" value={totalPages} name="searchSize" id="searchSize" disabled>
+                    <button type="button" value={Next} class="btnPaging">Next</button>
+                    <button type="button" value={Last} class="btnPaging">Last</button>  
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>
